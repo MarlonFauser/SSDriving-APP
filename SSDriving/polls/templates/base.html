@@ -1,0 +1,32 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SSDriving sua ferramenta de gestão logjistica" />
+    <title>SSDriving</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="{%static '/css/styles.css' %}"/>
+</head>
+<body>
+<div class="header">
+    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+        <a class="pure-menu-heading" href="{% url 'home' %}">SSDriving</a>
+        <ul>
+            <li><a href="#">Agendar Retirada</a></li>
+            <li><a href="#">Agendar Entrega</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'contato' %}">Contato</a></li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    {% block content %}{% endblock %}
+    <div class="footer">
+    SSDriving - Uma plataforma de gestão logóstica!
+    </div>
+</div>
+<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+</body>
+</html>
