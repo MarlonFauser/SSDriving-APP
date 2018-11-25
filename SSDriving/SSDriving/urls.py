@@ -21,4 +21,5 @@ from django.conf import settings
 urlpatterns = [
     path('', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
