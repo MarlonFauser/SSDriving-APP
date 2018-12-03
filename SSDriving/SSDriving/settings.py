@@ -62,7 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.contrib.messages.context_processors.messages'
             ],
         },
     },
@@ -100,6 +100,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Email settings
+DEFAULT_FROM_EMAIL = "ssdrivingsystem@gmail.com"
+
+EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_HOST_USER = "ssdrivingsystem@gmail.com"
+
+EMAIL_HOST_PASSWORD = "admin@admin"
+
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

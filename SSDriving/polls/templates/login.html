@@ -1,38 +1,55 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
-
-{% if next %}
-{% if user.is_authenticated %}
-<p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-{% else %}
-<p>Please login to see this page.</p>
-{% endif %}
-{% endif %}
-
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-    </table>
-
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
-
-{# Assumes you setup the password_reset view in your URLconf #}
-<p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+{% load static %}
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Login</h3>
+            <form action="{% url 'login'%}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Seu Usuário *" value="" />
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Sua Senha *" value="" />
+                </div>
+                <div class="form-group">
+                    <input name="login" type="submit" class="btnSubmit" value="Login" />
+                </div>
+            </form>
+            <span style="color: red;">{{ loginerrormessage }}</span>
+            <div class="form-group">
+                <a href="#" class="btnForgetPwd">Esqueceu a senha?</a>
+            </div>
+        </div>
+        <div style="padding-right:px; padding-left:px;" class="col-md-6 login-form-2">
+            <div class="login-logo">
+                <div class="circletag"></div>
+                <img src="{% static 'assets/SSDrivingWhite.png' %}" />
+            </div>
+            <h3>Cadastre-se</h3>
+            <form action="{% url 'login'%}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input name="username" type="text" class="form-control" placeholder="Seu Usuário *" value="" />
+                </div>
+                <div class="form-group">
+                    <input name="email" type="text" class="form-control" placeholder="Seu Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control" placeholder="Sua Senha *" value="" />
+                </div>
+                <!-- <div class="form-group">
+                    <input name="confirmPassword" type="password" class="form-control" placeholder="Repita Sua Senha *" value="" />
+                </div> -->
+                <div class="form-group">
+                    <input name="register" type="submit" class="btnSubmit" value="Confirmar" />
+                </div>
+                <span style="color: white;">{{ registererrormessage }}</span>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -10,5 +10,5 @@ urlpatterns = [
     # ex: http://localhost:8000/login
     path('login', views.login, name='login'),
     # ex: http://localhost:8000/login
-
+    path('logout', views.logout, name='logout'),
 ]

@@ -1,17 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="pure-g-r content-ribbon">
-    <div class="pure-u-1">
-        <h1>Fale conosco</h1>
-        <p>Você pode entrar em contato conosco tanto por e-mail como pelas redes sociais, abaixo seguem os links para contato:</p>
-        <h4>Links</h4>
-        <ul>
-            <li>E-mail: <a href="#" target= _blank>ssdriving@gmail.com</a></li>
-            <li>Instagram: <a href="#" target= _blank>SSDriving</a></li>
-            <li>Endereço: <a href="https://goo.gl/RcpRbc" target= _blank>Rua Tijucas - América, Joinville - SC </a></li>
-            <li>Telefone: 047-99688-2599</li>
-        </ul>
+<div style="padding:5%;">
+  <div class="row">
+    <div class="col-md-3">
+      <div style="color: white;" class="contact-info">
+        <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+        <h2>Contate-nos</h2>
+        <h4>Fale com um especialista!</h4>
+      </div>
     </div>
+    <div style="border: 1px solid lightgray" class="col-md-9">
+      <div class="contact-form">
+        <form action="{% url 'contato'%}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="firstname">Nome:</label>
+            <div class="col-sm-10">
+              <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Digite seu Primeiro Nome"
+                name="fname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="lastname">Sobrenome:</label>
+            <div class="col-sm-10">
+              <input name="lastname" type="text" class="form-control" id="lastname" placeholder="Digite seu Sobrenome"
+                name="lname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">E-mail:</label>
+            <div class="col-sm-10">
+              <input name="email" type="email" class="form-control" id="email" placeholder="Digite seu E-mail" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="comment">Comentário:</label>
+            <div class="col-sm-10">
+              <textarea name="comment" class="form-control" rows="5" id="comment"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button name="contact" type="submit" style="background-color: #343a40 !important;" class="btn btn-default">Enviar</button>
+            </div>
+          </div>
+          <span style="color: green">{{ message }}</span>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
