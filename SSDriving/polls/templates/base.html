@@ -24,6 +24,7 @@
                 <li class="nav-item {{ home }}">
                     <a class="nav-link" href="{% url 'home' %}"> Home </a>
                 </li>
+                {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown {{ agendamento }}">
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Agendamento </a>
                     <ul class="dropdown-menu">
@@ -31,7 +32,6 @@
                         <li><a class="dropdown-item" href="#"> Retirada </a></li>
                     </ul>
                 </li>
-                {% if request.user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown"> {{ request.user }}</a>
                     <ul class="dropdown-menu">
